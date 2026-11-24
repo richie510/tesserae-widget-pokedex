@@ -1,0 +1,25 @@
+# What tools/preview.py shows (docs/PREVIEW.md in the tessera-plugins repository, "Screensavers"): the step with
+# Pikachu and Charizard, the pixel sprite, and the dex text off. The answers are this repository's own files, tessera/dex/.
+savers:
+  - saver: dex
+    name: Pikachu
+    entity: input_boolean.tab5_pokedex
+    options: { mode: pick, pokemon: 25, artwork: false }
+  - saver: dex
+    name: Charizard
+    entity: input_boolean.tab5_pokedex
+    options: { mode: pick, pokemon: 6, artwork: false, dex_text: false }
+
+states:
+  input_boolean.tab5_pokedex:
+    state: "on"
+    attributes: { friendly_name: Tab5 Pokédex }
+
+answers:
+  entry:
+    "n=25": {"n": 25, "name": "Pikachu", "genus": "Mouse Pokémon", "type1": "ELECTRIC", "type2": "", "stats": [35, 55, 40, 50, 50, 90], "height": 0.4, "weight": 6.0, "dex": ["When several of these Pokémon gather, their", "electricity could build and cause lightning", "storms."]}
+    "n=6": {"n": 6, "name": "Charizard", "genus": "Flame Pokémon", "type1": "FIRE", "type2": "FLYING", "stats": [78, 84, 78, 109, 85, 100], "height": 1.7, "weight": 90.5, "dex": ["Spits fire that is hot enough to melt boulders.", "Known to cause forest fires unintentionally."]}
+
+pictures:
+  "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png": preview/25.png
+  "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/6.png": preview/6.png

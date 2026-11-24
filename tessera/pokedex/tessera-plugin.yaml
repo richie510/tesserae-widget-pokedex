@@ -1,0 +1,77 @@
+# Pokédex: a screensaver step of its own (plugin API 0.27, docs/FIRMWARE_API.md "A screensaver" in the tessera-plugins
+# repository), built like the Night clock: it shows while the entity you choose for it is on (an input_boolean, a
+# switch or a binary_sensor), and gives way to the next step of the screensaver's order when that entity is off.
+# It shows one Pokémon's dex entry over the glass: its sprite or artwork, number, name, kind, types, base stats and its
+# Pokédex text. A new one every few minutes, one a day, or always the same one.
+id: pokedex
+version: 0.1.0
+# 0.14 for the screensaver, 0.27 for the fetch the screen asks for (`asked`) and for 12 fields in its map.
+api: "0.27"
+icon: lightning-bolt
+maintainer: richie510
+license: MIT
+stage: beta
+topics: [fun]
+requires:
+  esphome: 2026.6.2
+boards: any
+flash_kb: 12
+
+permissions:
+  # The dex entries (tessera/dex/ in this repository) and PokéAPI's sprites, both on GitHub.
+  network: [raw.githubusercontent.com]
+attributes: [cloud]
+privacy: https://github.com/richie510/tesserae-widget-pokedex/blob/main/tessera/pokedex/README.md#what-leaves-your-home
+
+fetch:
+  # One Pokémon's entry, asked by the screen for the number it picked. PokéAPI's own answers are too large for a fetch
+  # (about 500 KB), so tessera/tools/build_dex.py writes one small file per Pokémon from PokéAPI's data, with the dex
+  # text in lines of at most 48 bytes (a fetch cuts a text there).
+  - id: entry
+    url: "https://raw.githubusercontent.com/richie510/tesserae-widget-pokedex/main/tessera/dex/{n}.json"
+    asked: [n]
+    every: 30d
+    map:
+      fields:
+        name: name
+        genus: genus
+        type1: type1
+        type2: type2
+        stats: { path: "stats[*]", as: numbers }
+        height: { path: height, as: number }
+        weight: { path: weight, as: number }
+        dex0: "dex[0]"
+        dex1: "dex[1]"
+        dex2: "dex[2]"
+        dex3: "dex[3]"
+
+savers:
+  # A step of its own, as the Night clock: shown while the chosen entity (an input_boolean such as
+  # input_boolean.tab5_pokedex) is on. Put it where you like in the Screensaver card's order; when the entity is off,
+  # the next step shows.
+  - id: dex
+    name: saver_name
+    icon: lightning-bolt
+    step: own
+    # About 35 LVGL objects: the picture, five labels, two type badges, six rows of stats and the dex text.
+    memory: 4000
+    pictures: 1
+    domains: [input_boolean, switch, binary_sensor]
+    when: { state: ["on"] }
+    example: saver_example
+    options:
+      - id: mode
+        kind: choice
+        label: mode
+        default: random
+        choices: [{ value: random, label: mode_random }, { value: daily, label: mode_daily }, { value: pick, label: mode_pick }]
+      - { id: every, kind: number, label: every, hint: every_hint, min: 1, max: 120, step: 1, unit: min, default: 5 }
+      - { id: pokemon, kind: number, label: pokemon, hint: pokemon_hint, min: 1, max: 1025, step: 1, default: 25 }
+      - id: pool
+        kind: choice
+        label: pool
+        default: gen1
+        choices: [{ value: gen1, label: pool_gen1 }, { value: gen2, label: pool_gen2 }, { value: gen3, label: pool_gen3 },
+                  { value: all, label: pool_all }]
+      - { id: artwork, kind: toggle, label: artwork, hint: artwork_hint, default: true }
+      - { id: dex_text, kind: toggle, label: dex_text, hint: dex_text_hint, default: true }

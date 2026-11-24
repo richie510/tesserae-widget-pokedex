@@ -1,0 +1,37 @@
+{
+  "_meta": { "name": "Nederlands" },
+  "screen": {
+    "waiting": "Op zoek naar een Pokémon...",
+    "failed": "De Pokédex is niet bereikbaar. Zo meteen opnieuw.",
+    "hp": "HP",
+    "atk": "Aanval",
+    "def": "Verdediging",
+    "spa": "Sp. Aanv",
+    "spd": "Sp. Verd",
+    "spe": "Snelheid",
+    "size": "{height} m, {weight} kg"
+  },
+  "app": {
+    "name": "Pokédex",
+    "summary": "Een eigen stap van de schermbeveiliging: de Pokédex van een Pokémon, zolang een gekozen entiteit aan is.",
+    "saver_name": "Pokédex",
+    "saver_example": "#025 Pikachu, met plaatje, typen, basisstats en Pokédex-tekst",
+    "mode": "Pokémon",
+    "mode_random": "Om de paar minuten een nieuwe",
+    "mode_daily": "Pokémon van de dag",
+    "mode_pick": "Altijd dezelfde",
+    "every": "Nieuwe Pokémon elke",
+    "every_hint": "Voor Om de paar minuten een nieuwe.",
+    "pokemon": "Nummer",
+    "pokemon_hint": "Voor Altijd dezelfde: 25 is Pikachu.",
+    "pool": "Uit",
+    "pool_gen1": "De eerste 151 (Kanto)",
+    "pool_gen2": "Gen I tot II (251)",
+    "pool_gen3": "Gen I tot III (386)",
+    "pool_all": "Alle (1025)",
+    "artwork": "Getekend plaatje",
+    "artwork_hint": "Uit toont de klassieke pixelsprite.",
+    "dex_text": "Pokédex-tekst",
+    "dex_text_hint": "De paar regels van de Pokédex, onder de stats."
+  }
+}

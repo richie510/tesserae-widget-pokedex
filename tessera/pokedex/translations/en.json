@@ -1,0 +1,37 @@
+{
+  "_meta": { "name": "English" },
+  "screen": {
+    "waiting": "Looking for a Pokémon...",
+    "failed": "The Pokédex could not be reached. Trying again soon.",
+    "hp": "HP",
+    "atk": "Attack",
+    "def": "Defense",
+    "spa": "Sp. Atk",
+    "spd": "Sp. Def",
+    "spe": "Speed",
+    "size": "{height} m, {weight} kg"
+  },
+  "app": {
+    "name": "Pokédex",
+    "summary": "A screensaver step of its own: a Pokémon's dex entry, shown while a chosen entity is on.",
+    "saver_name": "Pokédex",
+    "saver_example": "#025 Pikachu, its artwork, types, base stats and dex entry",
+    "mode": "Pokémon",
+    "mode_random": "A new one every few minutes",
+    "mode_daily": "Pokémon of the day",
+    "mode_pick": "Always the same one",
+    "every": "New Pokémon every",
+    "every_hint": "For A new one every few minutes.",
+    "pokemon": "Dex number",
+    "pokemon_hint": "For Always the same one: 25 is Pikachu.",
+    "pool": "Pool",
+    "pool_gen1": "Original 151 (Kanto)",
+    "pool_gen2": "Gen I to II (251)",
+    "pool_gen3": "Gen I to III (386)",
+    "pool_all": "All (1025)",
+    "artwork": "Painted artwork",
+    "artwork_hint": "Off shows the classic pixel sprite instead.",
+    "dex_text": "Dex entry",
+    "dex_text_hint": "The Pokédex's few lines about it, under the stats."
+  }
+}

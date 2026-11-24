@@ -30,3 +30,11 @@ Fetches from `pokeapi.co` server-side with a long-lived per-Pokémon cache (dex 
 ## Install
 
 Install from the Tesserae widget marketplace (`pokedex`), or drop the `pokedex/` folder into your Tesserae plugins directory.
+
+## Tessera screensaver
+
+`tessera/pokedex/` is the same Pokédex as a plugin for [Tessera](https://github.com/MaxGramser/tessera-plugins), the
+ESP32 touch screens for Home Assistant: a screensaver step of its own that shows a Pokémon's dex entry while an entity
+you choose (a toggle helper, a switch) is on, and gives way to the next step when it is off. Add it in Tessera with the
+link `https://github.com/richie510/tesserae-widget-pokedex/tree/main/tessera/pokedex`; its
+[README](tessera/pokedex/README.md) has the steps. Its data is in `tessera/dex/`, written by `tessera/tools/build_dex.py`.
